@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turncloak Card Conspiracy - Tutorial & Guide</title>
+    <meta name="description" content="Learn how to play Turncloak Card Conspiracy - a social deduction roguelike game where you must find the traitor hiding among the good cards.">
+    <meta name="keywords" content="Turncloak Card Conspiracy, social deduction game, card game, traitor game, roguelike, strategy game">
+    <meta name="author" content="Turncloak Card Conspiracy">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg">
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turncloak.cc/">
+    <meta property="og:title" content="Turncloak Card Conspiracy - Tutorial & Guide">
+    <meta property="og:description" content="Learn how to play Turncloak Card Conspiracy - a social deduction roguelike game where you must find the traitor hiding among the good cards.">
+    <meta property="og:image" content="https://turncloak.cc/images/turncloak_logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Turncloak Card Conspiracy">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://turncloak.cc/">
+    <meta name="twitter:title" content="Turncloak Card Conspiracy - Tutorial & Guide">
+    <meta name="twitter:description" content="Learn how to play Turncloak Card Conspiracy - a social deduction roguelike game where you must find the traitor hiding among the good cards.">
+    <meta name="twitter:image" content="https://turncloak.cc/images/turncloak_logo.png">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://turncloak.cc/">
+    
+    <!-- jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/ui-lightness/jquery-ui.css">
+    
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <!-- Tone.js for interactive sound -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
+    
+    <!-- Spectrum Color Picker (jQuery Plugin) -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js" defer></script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="images/turncloak_logo.png" as="image">
+    <link rel="preload" href="styles.css" as="style">
+</head>
+<body class="theme-gambit">
+    <!-- Skip Link for Accessibility -->
+    <a href="#introduction" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="images/turncloak_logo.png" alt="Turncloak Card Conspiracy Logo" class="header-logo" width="150" height="auto" loading="eager">
+            </div>
+            <h1>Turncloak Card Conspiracy</h1>
+            <p class="tagline">Find the Traitor Among Us</p>
+            <div class="header-controls">
+                <div class="theme-switcher">
+                    <label for="theme-select">Theme:</label>
+                    <select id="theme-select" aria-label="Select theme">
+                        <option value="gambit">Gambit Heights</option>
+                        <option value="shipwreck">Shipwreck Royal</option>
+                        <option value="cedarcrest">Cedarcrest Chalet</option>
+                        <option value="cosmic">Cosmic Casino</option>
+                    </select>
+                </div>
+                <div class="username-control">
+                    <button id="get-started-btn" class="btn-header">Get Started</button>
+                    <div id="username-display" class="username-display-header hidden">
+                        <span id="username-greeting">Hi, <span id="username-name"></span>!</span>
+                        <button id="edit-username-btn" class="btn-edit" aria-label="Edit username">✎</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Username/Color Picker Modal (jQuery UI Dialog) -->
+    <div id="username-modal" title="Get Started" class="hidden">
+        <form id="username-modal-form">
+            <div class="form-group">
+                <label for="username-modal-input">Username:</label>
+                <input type="text" id="username-modal-input" name="username" placeholder="Enter your username" required>
+                <span class="message"></span>
+            </div>
+            <div class="form-group">
+                <label for="username-color-modal">Username Color:</label>
+                <div id="color-picker-container">
+                    <input type="color" id="username-color-modal" name="username-color" value="#d4af37">
+                </div>
+                <span class="message"></span>
+            </div>
+            <div class="modal-buttons">
+                <button type="submit" class="btn-primary">Save Preferences</button>
+                <button type="button" id="cancel-username-btn" class="btn-secondary">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#good-cards-carousel">Good Cards Carousel</a></li>
+            <li><a href="#bad-cards-carousel">Bad Cards Carousel</a></li>
+            <li><a href="#how-to-play">How to Play</a></li>
+            <li><a href="#good-cards">Good Cards</a></li>
+            <li><a href="#bad-cards">Bad Cards</a></li>
+            <li><a href="#strategy">Strategy Tips</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Introduction Section -->
+        <section id="introduction" class="section" aria-labelledby="intro-heading">
+            <h2 id="intro-heading">Welcome to Turncloak Card Conspiracy</h2>
+            <article class="intro-content">
+                <p>Turncloak Card Conspiracy is a thrilling social deduction roguelike game where deception and strategy collide. In this game, you find yourself in a mysterious setting - whether it's a bustling casino, a quiet town, a ship at sea, or a space station - surrounded by a crew of characters.</p>
+                <p><strong>How the Game Works:</strong> Each game round doesn't use all 18 cards at once. Instead, you'll play one of four game modes with different card counts and traitor configurations:</p>
+                <ul>
+                    <li><strong>Mode 1 - 6-Card Classic:</strong> 5 Good cards, 1 Evil traitor (hidden)</li>
+                    <li><strong>Mode 2 - 8-Card Table:</strong> 7 Good cards, 1 Evil traitor (hidden)</li>
+                    <li><strong>Mode 3 - 10-Card Casino Heist:</strong> 8 Good cards, 2 Evil traitors (one hidden, one face-up disguised)</li>
+                    <li><strong>Mode 4 - 12-Card Grand Tower:</strong> 10 Good cards, 2 Evil traitors (both hidden, one face-up is secretly Evil)</li>
+                </ul>
+                <p>The bad cards disguise themselves as good cards, making them nearly indistinguishable at first glance. Your mission is to sniff out the traitors through careful observation, deduction, and the classic "he said, she said, they said" gameplay mechanics. Each card has unique functionality that can help or hinder your investigation.</p>
+                <p>Click on cards in the carousels below to hear their sound effects and learn about their abilities!</p>
+            </article>
+        </section>
+
+        <!-- Good Cards Carousel Section -->
+        <section id="good-cards-carousel" class="section" aria-labelledby="good-carousel-heading">
+            <h2 id="good-carousel-heading">Good Cards Showcase</h2>
+            <p class="section-intro">Browse through all the good team cards in this interactive carousel.</p>
+            <div class="card-carousel good-carousel">
+                <div class="carousel-slide">
+                    <img src="images/cards/socialite_draft.png" alt="Socialite card" class="carousel-image">
+                    <div class="carousel-caption">Socialite</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/valet_draft.png" alt="Valet card" class="carousel-image">
+                    <div class="carousel-caption">Valet</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/clerk_draft.png" alt="Clerk card" class="carousel-image">
+                    <div class="carousel-caption">Clerk</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/contractor_draft.png" alt="Contractor card" class="carousel-image">
+                    <div class="carousel-caption">Contractor</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/dancer_draft.png" alt="Dancer card" class="carousel-image">
+                    <div class="carousel-caption">Dancer</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/manager_draft.png" alt="Manager card" class="carousel-image">
+                    <div class="carousel-caption">Manager</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/analyst_draft.png" alt="Analyst card" class="carousel-image">
+                    <div class="carousel-caption">Analyst</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/boss_draft.png" alt="Boss card" class="carousel-image">
+                    <div class="carousel-caption">Boss</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/bartender_draft.png" alt="Bartender card" class="carousel-image">
+                    <div class="carousel-caption">Bartender</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/hacker_draft.png" alt="Hacker card" class="carousel-image">
+                    <div class="carousel-caption">Hacker</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/daredevil_draft.png" alt="Daredevil card" class="carousel-image">
+                    <div class="carousel-caption">Daredevil</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/security_draft.png" alt="Security card" class="carousel-image">
+                    <div class="carousel-caption">Security</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/dealer_draft.png" alt="Dealer card" class="carousel-image">
+                    <div class="carousel-caption">Dealer</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bad Cards Carousel Section -->
+        <section id="bad-cards-carousel" class="section" aria-labelledby="bad-carousel-heading">
+            <h2 id="bad-carousel-heading">Bad Cards Showcase</h2>
+            <p class="section-intro">Browse through all the traitor cards in this interactive carousel.</p>
+            <div class="card-carousel bad-carousel">
+                <div class="carousel-slide">
+                    <img src="images/cards/runner_draft.png" alt="Runner card" class="carousel-image">
+                    <div class="carousel-caption">Runner</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/saboteur_draft.png" alt="Saboteur card" class="carousel-image">
+                    <div class="carousel-caption">Saboteur</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/cheater_draft.png" alt="Cheater card" class="carousel-image">
+                    <div class="carousel-caption">Cheater</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/fixer_draft.png" alt="Fixer card" class="carousel-image">
+                    <div class="carousel-caption">Fixer</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/cards/trickster_draft.png" alt="Trickster card" class="carousel-image">
+                    <div class="carousel-caption">Trickster</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play Section -->
+        <section id="how-to-play" class="section" aria-labelledby="how-to-play-heading">
+            <h2 id="how-to-play-heading">How to Play</h2>
+            <div id="accordion" role="region" aria-label="Game instructions">
+                <h3>Game Modes & Setup</h3>
+                <div>
+                    <p>At the start of each game, you'll choose one of four game modes, each with different card counts and traitor configurations:</p>
+                    <p><strong>🎴 MODE 1 - 6-CARD CLASSIC (1 Traitor):</strong> 5 Good, 1 Evil (hidden). Goal: Find the 1 disguised Evil hiding among the 6 face-up cards. Best for: Fast rounds, beginners, mobile party play.</p>
+                    <p><strong>🎴 MODE 2 - 8-CARD TABLE (1 Traitor):</strong> 7 Good roles (face-up), 1 Evil role (hidden). More Good abilities create conflicting "truth webs." Analyst becomes stronger. Best for: Medium-length games, 5-7 players.</p>
+                    <p><strong>🎴 MODE 3 - 10-CARD CASINO HEIST (2 Traitors):</strong> 8 Good roles (face-up), 2 Evil roles (one hidden, one face-up disguised as Good). The two Evil roles coordinate contradictions and spread misinformation. Goal: Identify the face-up disguised Evil card. Best for: Deep logic, experienced players.</p>
+                    <p><strong>🎴 MODE 4 - 12-CARD GRAND TOWER (2 Traitors):</strong> 10 Good roles (face-up), 2 Evil roles (both hidden, one of the face-up "Good" cards is secretly Evil). Maximum chaos and strategy. Best for: Experienced players, long sessions, deep strategy groups.</p>
+                </div>
+                <h3>Gameplay Mechanics</h3>
+                <div>
+                    <p>The core of Turncloak Card Conspiracy revolves around social deduction and information gathering. Each card has unique abilities that provide information about other cards or reveal clues about who might be the traitor.</p>
+                    <p>Good cards will provide truthful information to help you identify the traitors. Bad cards, however, disguise themselves as good cards and will provide false or misleading information to protect themselves and confuse investigators.</p>
+                    <p>The "he said, she said, they said" mechanic means that information from different cards can be contradictory. You must carefully analyze all the information, look for patterns and inconsistencies, and determine which cards are telling the truth and which are lying.</p>
+                    <p>Key abilities to watch for: The Analyst always reports the correct number of evil cards alive. The Dealer can detect contradictions. The Bartender gathers information through conversations. Use these abilities strategically to piece together the truth.</p>
+                </div>
+                <h3>Winning Conditions</h3>
+                <div>
+                    <p><strong>Good Team Wins:</strong> Successfully identify and correctly accuse all bad cards (traitors) hiding among the group.</p>
+                    <p><strong>Bad Team Wins:</strong> Avoid detection and prevent the good team from correctly identifying them, or survive until the end of the game without being caught.</p>
+                    <p>The game can be played in single-player mode where you investigate against AI-controlled cards, or in multiplayer mode where players take on different card roles and use their abilities to gather and share information.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Good Cards Section -->
+        <section id="good-cards" class="section" aria-labelledby="good-cards-heading">
+            <h2 id="good-cards-heading">The Good Team</h2>
+            <p class="section-intro">These 13 cards are the front-facing roles you'll encounter. However, remember that some of them might actually be bad cards in disguise! Click on cards to hear their sound effects.</p>
+            <div class="cards-grid good-cards-grid" role="list" aria-label="Good team cards">
+                <article class="flip-card-container" data-card="socialite" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Socialite card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/socialite_draft.png" alt="Socialite card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Socialite</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Socialite</h3>
+                                <p>The Socialite is a master of information gathering. They can learn secrets from other players and share valuable intel with the team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="valet" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Valet card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/valet_draft.png" alt="Valet card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Valet</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Valet</h3>
+                                <p>The Valet serves as a protector, able to shield other players from harm and provide safe passage through dangerous situations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="clerk" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Clerk card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/clerk_draft.png" alt="Clerk card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Clerk</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Clerk</h3>
+                                <p>The Clerk maintains records and can verify information about other cards, helping to confirm or deny suspicions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="contractor" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Contractor card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/contractor_draft.png" alt="Contractor card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Contractor</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Contractor</h3>
+                                <p>The Contractor builds alliances and can create connections between players, facilitating better communication and coordination.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="dancer" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Dancer card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/dancer_draft.png" alt="Dancer card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Dancer</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Dancer</h3>
+                                <p>The Dancer moves with grace and can redirect actions, changing the target of abilities to protect the innocent.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="manager" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Manager card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/manager_draft.png" alt="Manager card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Manager</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Manager</h3>
+                                <p>The Manager coordinates team efforts and can organize group actions, making the good team more effective.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="analyst" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Analyst card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/analyst_draft.png" alt="Analyst card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Analyst</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Analyst</h3>
+                                <p>The Analyst studies patterns and can predict likely outcomes, providing strategic advantages to the good team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="boss" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Boss card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/boss_draft.png" alt="Boss card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Boss</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Boss</h3>
+                                <p>The Boss has authority and can make decisive actions, potentially eliminating threats or protecting key players.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="bartender" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Bartender card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/bartender_draft.png" alt="Bartender card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Bartender</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Bartender</h3>
+                                <p>The Bartender gathers information through conversations and can learn about other players' true identities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="hacker" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Hacker card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/hacker_draft.png" alt="Hacker card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Hacker</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Hacker</h3>
+                                <p>The Hacker can access hidden information and reveal the true nature of suspicious cards through digital investigation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="daredevil" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Daredevil card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/daredevil_draft.png" alt="Daredevil card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Daredevil</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Daredevil</h3>
+                                <p>The Daredevil takes risks to gain information, able to investigate dangerous situations that others cannot.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="security" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Security card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/security_draft.png" alt="Security card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Security</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Security</h3>
+                                <p>The Security card protects players and can prevent harmful actions, serving as a guardian for the good team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="dealer" data-identity="good" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Dealer card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/dealer_draft.png" alt="Dealer card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Dealer</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Dealer</h3>
+                                <p>The Dealer controls the flow of information and can manipulate card reveals, helping to expose traitors or protect allies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Bad Cards Section -->
+        <section id="bad-cards" class="section" aria-labelledby="bad-cards-heading">
+            <h2 id="bad-cards-heading">The Bad Team</h2>
+            <p class="section-intro">These 5 cards are the traitors. They disguise themselves as good cards, making them difficult to identify. Watch for suspicious behavior! Click on cards to hear their sound effects.</p>
+            <div class="cards-grid bad-cards-grid" role="list" aria-label="Bad team cards">
+                <article class="flip-card-container" data-card="runner" data-identity="bad" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Runner card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/runner_draft.png" alt="Runner card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Runner</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Runner</h3>
+                                <p>The Runner moves quickly and can escape detection. They may appear as a good card but will flee when exposed, making them hard to catch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="saboteur" data-identity="bad" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Saboteur card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/saboteur_draft.png" alt="Saboteur card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Saboteur</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Saboteur</h3>
+                                <p>The Saboteur undermines the good team's efforts, poisoning information and spreading false leads to confuse investigators.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="cheater" data-identity="bad" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Cheater card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/cheater_draft.png" alt="Cheater card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Cheater</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Cheater</h3>
+                                <p>The Cheater manipulates the rules and can change outcomes, making it difficult to trust any information they provide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="fixer" data-identity="bad" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Fixer card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/fixer_draft.png" alt="Fixer card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Fixer</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Fixer</h3>
+                                <p>The Fixer arranges situations to benefit the bad team, setting up traps and manipulating events to their advantage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="flip-card-container" data-card="trickster" data-identity="bad" role="listitem">
+                    <div class="flip-card" tabindex="0" role="button" aria-label="Trickster card - click to flip">
+                        <div class="flip-card-front">
+                            <img src="images/cards/trickster_draft.png" alt="Trickster card" class="card-image" width="200" height="280" loading="lazy">
+                            <div class="card-name-overlay">Trickster</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-content">
+                                <h3>Trickster</h3>
+                                <p>The Trickster is a master of deception, able to appear as any good card and mislead players with false information.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Strategy Tips Section (Ajax/API) -->
+        <section id="strategy" class="section" aria-labelledby="strategy-heading">
+            <h2 id="strategy-heading">Strategy Tips</h2>
+            <p class="section-intro">Master the art of deduction with these strategic insights. Click the button below to get a random strategy tip!</p>
+            <div class="strategy-content">
+                <button id="load-tip" class="btn-primary">Get Strategy Tip</button>
+                <div id="tip-display" class="tip-container">
+                    <p class="tip-placeholder">Click the button above to load a strategy tip.</p>
+                </div>
+            </div>
+            <div class="strategy-list">
+                <h3>General Strategies</h3>
+                <ul>
+                    <li><strong>Observe Patterns:</strong> Pay attention to which cards are active and when. Bad cards may avoid certain interactions.</li>
+                    <li><strong>Listen to Sounds:</strong> Each card produces unique audio cues. Familiarize yourself with the sounds to identify suspicious behavior.</li>
+                    <li><strong>Question Everything:</strong> Don't trust information at face value. Verify claims through multiple sources.</li>
+                    <li><strong>Build Alliances:</strong> Work with other players to share information, but be wary - bad cards may try to infiltrate your group.</li>
+                    <li><strong>Use Card Abilities Wisely:</strong> Each card's ability is limited. Use them strategically to maximize their effectiveness.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Feedback Form Section -->
+        <section id="feedback" class="section" aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading">Feedback</h2>
+            <p class="section-intro">We'd love to hear your thoughts about Turncloak Card Conspiracy! Please share your feedback below.</p>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="alias">Alias:</label>
+                    <input type="text" id="alias" name="alias" placeholder="Your alias or name" required>
+                    <span class="message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    <span class="message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" name="comments" rows="5" placeholder="Share your thoughts, suggestions, or feedback..." required></textarea>
+                    <span class="message"></span>
+                </div>
+                <div class="form-group">
+                    <label>Rating (1-5):</label>
+                    <div class="rating-group">
+                        <input type="radio" id="rating-1" name="rating" value="1" required>
+                        <label for="rating-1" class="rating-label">1</label>
+                        <input type="radio" id="rating-2" name="rating" value="2">
+                        <label for="rating-2" class="rating-label">2</label>
+                        <input type="radio" id="rating-3" name="rating" value="3">
+                        <label for="rating-3" class="rating-label">3</label>
+                        <input type="radio" id="rating-4" name="rating" value="4">
+                        <label for="rating-4" class="rating-label">4</label>
+                        <input type="radio" id="rating-5" name="rating" value="5">
+                        <label for="rating-5" class="rating-label">5</label>
+                    </div>
+                    <span class="message"></span>
+                </div>
+                <button type="submit" class="btn-primary">Submit Feedback</button>
+            </form>
+            <div id="feedback-message" class="feedback-message"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Turncloak Card Conspiracy. THEAZORA, All rights reserved.</p>
+            <p>Master the art of deduction. Trust no one. Find the traitor.</p>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul role="list">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#good-cards-carousel">Good Cards Carousel</a></li>
+                    <li><a href="#bad-cards-carousel">Bad Cards Carousel</a></li>
+                    <li><a href="#how-to-play">How to Play</a></li>
+                    <li><a href="#good-cards">Good Cards</a></li>
+                    <li><a href="#bad-cards">Bad Cards</a></li>
+                    <li><a href="#strategy">Strategy</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

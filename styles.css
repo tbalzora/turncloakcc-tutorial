@@ -1,0 +1,1069 @@
+/* ============================================
+   Turncloak Card Conspiracy - Stylesheet
+   ============================================ */
+
+/* ============================================
+   Reset and Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hidden utility class */
+.hidden {
+    display: none !important;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    max-width: 1280px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color: #333;
+}
+
+/* ============================================
+   Theme System - CSS Variables
+   ============================================ */
+
+/* Gambit Heights Theme (Default) */
+:root,
+body.theme-gambit {
+    --primary-bg: #1a0d1a;
+    --header-bg: linear-gradient(135deg, #4a1a4a 0%, #6b2d6b 50%, #8b3d8b 100%);
+    --nav-bg: #3d1f3d;
+    --section-bg: #f8f9fa;
+    --card-bg: #fff;
+    --text-primary: #f5e6f5;
+    --text-secondary: #d4a5d4;
+    --text-dark: #333;
+    --accent-color: #d4af37;
+    --accent-hover: #f4d03f;
+    --good-color: #27ae60;
+    --bad-color: #e74c3c;
+    --border-color: #6b2d6b;
+    --shadow: rgba(107, 45, 107, 0.3);
+    --button-bg: var(--accent-color);
+    --button-hover: var(--accent-hover);
+}
+
+/* Shipwreck Royal Theme */
+body.theme-shipwreck {
+    --primary-bg: #0a1929;
+    --header-bg: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #3d7ab0 100%);
+    --nav-bg: #2d5a87;
+    --section-bg: #f5f5dc;
+    --text-primary: #e8f4f8;
+    --text-secondary: #b8d4e3;
+    --accent-color: #d4a574;
+    --accent-hover: #e6b886;
+    --border-color: #3d7ab0;
+    --shadow: rgba(61, 122, 176, 0.3);
+    --button-bg: var(--accent-color);
+    --button-hover: var(--accent-hover);
+}
+
+/* Cedarcrest Chalet Theme */
+body.theme-cedarcrest {
+    --primary-bg: #2c2416;
+    --header-bg: linear-gradient(135deg, #5d4e37 0%, #7d6e47 50%, #9d8e57 100%);
+    --nav-bg: #5d4e37;
+    --section-bg: #f4f1e8;
+    --text-primary: #f5f0e1;
+    --text-secondary: #d4c5a5;
+    --accent-color: #8b7355;
+    --accent-hover: #a68b6d;
+    --border-color: #7d6e47;
+    --shadow: rgba(125, 110, 71, 0.3);
+    --button-bg: #5d4e37;
+    --button-hover: #6b5a42;
+}
+
+/* Cosmic Casino Theme */
+body.theme-cosmic {
+    --primary-bg: #0d1117;
+    --header-bg: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+    --nav-bg: #1f2937;
+    --section-bg: #f9fafb;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --accent-color: #60a5fa;
+    --accent-hover: #93c5fd;
+    --border-color: #4b5563;
+    --shadow: rgba(75, 85, 99, 0.3);
+    --button-bg: var(--accent-color);
+    --button-hover: var(--accent-hover);
+}
+
+/* Apply theme colors */
+body {
+    background: var(--section-bg);
+    color: var(--text-dark);
+}
+
+/* ============================================
+   Skip Link (Accessibility)
+   ============================================ */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--text-primary);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+header {
+    background: var(--header-bg);
+    color: var(--text-primary);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+.logo-container {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    -ms-interpolation-mode: bicubic;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.header-controls {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.theme-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-switcher label {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.theme-switcher select {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 2px solid var(--accent-color);
+    background: var(--card-bg);
+    color: var(--text-dark);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.theme-switcher select:hover {
+    border-color: var(--accent-hover);
+}
+
+.username-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-header {
+    background: var(--button-bg, var(--accent-color));
+    color: var(--text-primary);
+    border: 2px solid var(--button-bg, var(--accent-color));
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-header:hover {
+    background: var(--button-hover, var(--accent-hover));
+    border-color: var(--button-hover, var(--accent-hover));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.username-display-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.username-display-header.hidden {
+    display: none;
+}
+
+#username-greeting {
+    font-weight: bold;
+}
+
+#username-name {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.btn-edit {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.btn-edit:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   Navigation Styles
+   ============================================ */
+nav {
+    background: var(--nav-bg);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px var(--shadow);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+nav ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   Main Content Styles
+   ============================================ */
+main {
+    padding: 2rem;
+    background: var(--section-bg);
+}
+
+.section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.section h2 {
+    color: var(--text-dark);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.intro-content p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.intro-content ul {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.intro-content ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Accordion Styles (jQuery UI)
+   ============================================ */
+#accordion {
+    margin-top: 1rem;
+}
+
+#accordion h3 {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    padding: 1rem;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    border-radius: 4px 4px 0 0;
+}
+
+#accordion h3:hover {
+    background: var(--accent-hover);
+}
+
+#accordion h3.ui-state-active {
+    background: var(--accent-hover);
+}
+
+#accordion div {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+#accordion div p {
+    margin-bottom: 1rem;
+}
+
+#accordion div p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Cards Grid Styles
+   ============================================ */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+    justify-items: center;
+}
+
+/* Flip Card Container - Card Shaped */
+.flip-card-container {
+    width: 200px;
+    height: 280px;
+    perspective: 1000px;
+    perspective-origin: center center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+}
+
+.flip-card-container.flipped {
+    z-index: 10;
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card-container.flipped {
+    z-index: 10;
+}
+
+.flip-card-container.flipped .flip-card {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.flip-card-front {
+    background: var(--card-bg);
+    border: 4px solid var(--border-color);
+    border-style: double;
+}
+
+.good-cards-grid .flip-card-front {
+    border-color: var(--good-color);
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--good-color);
+}
+
+.bad-cards-grid .flip-card-front {
+    border-color: var(--bad-color);
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--bad-color);
+}
+
+.flip-card-back {
+    background: var(--card-bg);
+    border: 4px solid var(--border-color);
+    border-style: double;
+    transform: rotateY(180deg);
+    padding: 1rem;
+}
+
+.good-cards-grid .flip-card-back {
+    border-color: var(--good-color);
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--good-color);
+}
+
+.bad-cards-grid .flip-card-back {
+    border-color: var(--bad-color);
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--bad-color);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    -ms-interpolation-mode: bicubic;
+}
+
+.card-name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: #fff;
+    padding: 0.75rem 0.5rem 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 0 0 7px 7px;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateZ(1px);
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.good-cards-grid .card-name-overlay {
+    background: linear-gradient(to top, rgba(39, 174, 96, 0.9), transparent);
+}
+
+.bad-cards-grid .card-name-overlay {
+    background: linear-gradient(to top, rgba(231, 76, 60, 0.9), transparent);
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.good-cards-grid .card-content h3 {
+    color: var(--good-color);
+}
+
+.bad-cards-grid .card-content h3 {
+    color: var(--bad-color);
+}
+
+.card-content p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+/* Responsive Grid Adjustments */
+
+/* Desktop */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .flip-card-container {
+        width: 180px;
+        height: 252px;
+    }
+}
+/* Tablet */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .flip-card-container {
+        width: 160px;
+        height: 224px;
+    }
+}
+/* Mobile */
+@media (max-width: 480px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+    
+    .flip-card-container {
+        width: 140px;
+        height: 196px;
+    }
+    
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-content p {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   Strategy Section Styles
+   ============================================ */
+.strategy-content {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.tip-container {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 2rem;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tip-placeholder {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.tip-quote {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    text-align: center;
+}
+
+.tip-author {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: right;
+}
+
+.strategy-list {
+    margin-top: 2rem;
+}
+
+.strategy-list h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.strategy-list ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.strategy-list ul li {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: var(--section-bg);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+}
+
+.strategy-list ul li strong {
+    color: var(--text-dark);
+}
+
+/* ============================================
+   Username Modal Styles (jQuery UI)
+   ============================================ */
+#username-modal {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input.errorInput,
+.form-group textarea.errorInput {
+    border-color: var(--bad-color);
+}
+
+.message {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--bad-color);
+    min-height: 1.2rem;
+}
+
+.message.error {
+    color: var(--bad-color);
+}
+
+#color-picker-container {
+    margin-top: 0.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    background: var(--section-bg);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+    border-color: var(--accent-color);
+}
+
+/* jQuery UI Customization */
+.username-dialog .ui-dialog-titlebar {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border: none;
+    padding: 1rem;
+}
+
+.username-dialog .ui-dialog-content {
+    padding: 1.5rem;
+    background: var(--card-bg);
+}
+
+.username-dialog .ui-dialog-buttonpane {
+    border-top: 1px solid var(--border-color);
+    background: var(--section-bg);
+}
+
+/* Spectrum Color Picker Customization */
+.sp-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+}
+
+.sp-palette-container {
+    border-right: 1px solid var(--border-color);
+}
+
+/* ============================================
+   Feedback Form Styles
+   ============================================ */
+.rating-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.rating-group input[type="radio"] {
+    display: none;
+}
+
+.rating-label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: var(--section-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.rating-label:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.rating-group input[type="radio"]:checked + .rating-label {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+    transform: scale(1.15);
+}
+
+.feedback-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+.feedback-message.success {
+    background: var(--good-color);
+    color: #fff;
+    display: block;
+}
+
+.feedback-message.error {
+    background: var(--bad-color);
+    color: #fff;
+    display: block;
+}
+
+/* ============================================
+   Footer Styles
+   ============================================ */
+footer {
+    background: var(--nav-bg);
+    color: var(--text-primary);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer-content p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav {
+    margin-top: 1rem;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    padding: 0;
+}
+
+.footer-nav li {
+    display: inline;
+}
+
+.footer-nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-hover);
+}
+
+/* ============================================
+   Adjusted Responsive Styles (Desktop, Tablet, Mobile)
+   ============================================ */
+@media (max-width: 1280px) {
+    body {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .username-picker-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 1rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================
+   Carousel Styles (Slick Carousel)
+   ============================================ */
+.card-carousel {
+    margin: 2rem 0;
+    padding: 1rem 0;
+}
+
+.carousel-slide {
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.carousel-image {
+    width: 200px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--shadow);
+    margin: 0 auto;
+    display: block;
+    border: 4px solid var(--border-color);
+}
+
+.good-carousel .carousel-image {
+    border-color: var(--good-color);
+    border-width: 5px;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--good-color);
+}
+
+.bad-carousel .carousel-image {
+    border-color: var(--bad-color);
+    border-width: 5px;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--bad-color);
+}
+
+.carousel-caption {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.good-carousel .carousel-caption {
+    color: var(--good-color);
+}
+
+.bad-carousel .carousel-caption {
+    color: var(--bad-color);
+}
+
+/* Slick Carousel Customization */
+.card-carousel .slick-prev,
+.card-carousel .slick-next {
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+}
+
+.card-carousel .slick-prev {
+    left: -60px;
+}
+
+.card-carousel .slick-next {
+    right: -60px;
+}
+
+.card-carousel .slick-prev:before,
+.card-carousel .slick-next:before {
+    font-size: 40px;
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+.card-carousel .slick-prev:hover:before,
+.card-carousel .slick-next:hover:before {
+    color: var(--accent-hover);
+}
+
+.card-carousel .slick-dots {
+    bottom: -40px;
+}
+
+.card-carousel .slick-dots li button:before {
+    font-size: 12px;
+    color: var(--accent-color);
+    opacity: 0.5;
+}
+
+.card-carousel .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* Responsive carousel adjustments */
+@media (max-width: 1280px) {
+    .card-carousel .slick-prev {
+        left: -40px;
+    }
+    
+    .card-carousel .slick-next {
+        right: -40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-carousel .slick-prev {
+        left: -20px;
+    }
+    
+    .card-carousel .slick-next {
+        right: -20px;
+    }
+    
+    .carousel-image {
+        width: 160px;
+        height: 224px;
+    }
+}
