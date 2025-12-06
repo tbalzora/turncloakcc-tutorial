@@ -42,16 +42,16 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/ui-lightness/jquery-ui.css">
     
     <!-- Slick Carousel -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
     <!-- Tone.js for interactive sound -->
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
     
     <!-- Spectrum Color Picker (jQuery Plugin) -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -71,7 +71,7 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <img src="images/turncloak_logo.png" alt="Turncloak Card Conspiracy Logo" class="header-logo" width="150" height="auto" loading="eager">
+                <img src="images/turncloak_logo.png" alt="Turncloak Card Conspiracy Logo" class="header-logo" width="150" loading="eager">
             </div>
             <h1>Turncloak Card Conspiracy</h1>
             <p class="tagline">Find the Traitor Among Us</p>
@@ -138,6 +138,7 @@
         <section id="introduction" class="section" aria-labelledby="intro-heading">
             <h2 id="intro-heading">Welcome to Turncloak Card Conspiracy</h2>
             <article class="intro-content">
+                <h3 class="sr-only">Introduction Content</h3>
                 <p>Turncloak Card Conspiracy is a thrilling social deduction roguelike game where deception and strategy collide. In this game, you find yourself in a mysterious setting - whether it's a bustling casino, a quiet town, a ship at sea, or a space station - surrounded by a crew of characters.</p>
                 <p><strong>How the Game Works:</strong> Each game round doesn't use all 18 cards at once. Instead, you'll play one of four game modes with different card counts and traitor configurations:</p>
                 <ul>
@@ -272,7 +273,7 @@
             <h2 id="good-cards-heading">The Good Team</h2>
             <p class="section-intro">These 13 cards are the front-facing roles you'll encounter. However, remember that some of them might actually be bad cards in disguise! Click on cards to hear their sound effects.</p>
             <div class="cards-grid good-cards-grid" role="list" aria-label="Good team cards">
-                <article class="flip-card-container" data-card="socialite" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="socialite" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Socialite card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/socialite_draft.png" alt="Socialite card" class="card-image" width="200" height="280" loading="lazy">
@@ -286,7 +287,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="valet" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="valet" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Valet card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/valet_draft.png" alt="Valet card" class="card-image" width="200" height="280" loading="lazy">
@@ -300,7 +301,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="clerk" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="clerk" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Clerk card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/clerk_draft.png" alt="Clerk card" class="card-image" width="200" height="280" loading="lazy">
@@ -314,7 +315,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="contractor" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="contractor" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Contractor card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/contractor_draft.png" alt="Contractor card" class="card-image" width="200" height="280" loading="lazy">
@@ -328,7 +329,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="dancer" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="dancer" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Dancer card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/dancer_draft.png" alt="Dancer card" class="card-image" width="200" height="280" loading="lazy">
@@ -342,7 +343,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="manager" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="manager" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Manager card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/manager_draft.png" alt="Manager card" class="card-image" width="200" height="280" loading="lazy">
@@ -356,7 +357,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="analyst" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="analyst" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Analyst card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/analyst_draft.png" alt="Analyst card" class="card-image" width="200" height="280" loading="lazy">
@@ -370,7 +371,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="boss" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="boss" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Boss card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/boss_draft.png" alt="Boss card" class="card-image" width="200" height="280" loading="lazy">
@@ -384,7 +385,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="bartender" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="bartender" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Bartender card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/bartender_draft.png" alt="Bartender card" class="card-image" width="200" height="280" loading="lazy">
@@ -398,7 +399,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="hacker" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="hacker" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Hacker card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/hacker_draft.png" alt="Hacker card" class="card-image" width="200" height="280" loading="lazy">
@@ -412,7 +413,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="daredevil" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="daredevil" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Daredevil card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/daredevil_draft.png" alt="Daredevil card" class="card-image" width="200" height="280" loading="lazy">
@@ -426,7 +427,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="security" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="security" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Security card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/security_draft.png" alt="Security card" class="card-image" width="200" height="280" loading="lazy">
@@ -440,7 +441,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="dealer" data-identity="good" role="listitem">
+                <article class="flip-card-container" data-card="dealer" data-identity="good">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Dealer card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/dealer_draft.png" alt="Dealer card" class="card-image" width="200" height="280" loading="lazy">
@@ -462,7 +463,7 @@
             <h2 id="bad-cards-heading">The Bad Team</h2>
             <p class="section-intro">These 5 cards are the traitors. They disguise themselves as good cards, making them difficult to identify. Watch for suspicious behavior! Click on cards to hear their sound effects.</p>
             <div class="cards-grid bad-cards-grid" role="list" aria-label="Bad team cards">
-                <article class="flip-card-container" data-card="runner" data-identity="bad" role="listitem">
+                <article class="flip-card-container" data-card="runner" data-identity="bad">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Runner card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/runner_draft.png" alt="Runner card" class="card-image" width="200" height="280" loading="lazy">
@@ -476,7 +477,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="saboteur" data-identity="bad" role="listitem">
+                <article class="flip-card-container" data-card="saboteur" data-identity="bad">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Saboteur card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/saboteur_draft.png" alt="Saboteur card" class="card-image" width="200" height="280" loading="lazy">
@@ -490,7 +491,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="cheater" data-identity="bad" role="listitem">
+                <article class="flip-card-container" data-card="cheater" data-identity="bad">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Cheater card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/cheater_draft.png" alt="Cheater card" class="card-image" width="200" height="280" loading="lazy">
@@ -504,7 +505,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="fixer" data-identity="bad" role="listitem">
+                <article class="flip-card-container" data-card="fixer" data-identity="bad">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Fixer card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/fixer_draft.png" alt="Fixer card" class="card-image" width="200" height="280" loading="lazy">
@@ -518,7 +519,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="flip-card-container" data-card="trickster" data-identity="bad" role="listitem">
+                <article class="flip-card-container" data-card="trickster" data-identity="bad">
                     <div class="flip-card" tabindex="0" role="button" aria-label="Trickster card - click to flip">
                         <div class="flip-card-front">
                             <img src="images/cards/trickster_draft.png" alt="Trickster card" class="card-image" width="200" height="280" loading="lazy">
@@ -605,7 +606,7 @@
             <p>&copy; <span id="current-year"></span> Turncloak Card Conspiracy. THEAZORA, All rights reserved.</p>
             <p>Master the art of deduction. Trust no one. Find the traitor.</p>
             <nav class="footer-nav" aria-label="Footer navigation">
-                <ul role="list">
+                <ul>
                     <li><a href="#introduction">Introduction</a></li>
                     <li><a href="#good-cards-carousel">Good Cards Carousel</a></li>
                     <li><a href="#bad-cards-carousel">Bad Cards Carousel</a></li>
